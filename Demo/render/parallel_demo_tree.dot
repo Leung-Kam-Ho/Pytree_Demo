@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+ParallelDemo [label="⚡ ParallelDemo\nSuccessOnAll", shape=parallelogram, style=filled, fillcolor=gold, fontsize=9, fontcolor=black];
+"TaskA (3 ticks)" [label="TaskA (3 ticks)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+ParallelDemo -> "TaskA (3 ticks)";
+"TaskB (10 ticks)" [label="TaskB (10 ticks)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+ParallelDemo -> "TaskB (10 ticks)";
+"Background (Never Stop)" [label="Background (Never Stop)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+ParallelDemo -> "Background (Never Stop)";
+}
