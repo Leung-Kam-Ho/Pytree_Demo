@@ -58,7 +58,8 @@ def build_tree():
 
 if __name__ == "__main__":
     tree = py_trees.trees.BehaviourTree(root=build_tree())
-    py_trees.display.render_dot_tree(tree.root, name="sequence_demo_tree", target_directory=Path() / "Demo" / "render")
+    path = Path() / "Demo" / "Composites" / "render"
+    py_trees.display.render_dot_tree(tree.root, name="sequence_demo_tree", target_directory=path)
     tree.setup(timeout=1.0)
     count = 0
     while True:

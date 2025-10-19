@@ -2,6 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
+
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):
         super().__init__(name)
@@ -27,25 +28,24 @@ class DelayedSuccess(py_trees.behaviour.Behaviour):
 
 
 def build_tree():
-    root = py_trees.composites.Parallel(
-        name="ParallelDemo",
-        # policy=py_trees.common.ParallelPolicy.SuccessOnOne()
-        policy=py_trees.common.ParallelPolicy.SuccessOnAll()
+    root = py_trees.composites.Sequence(
+        name="SequenceDemo",
+        memory=True  # set True to remember progress across ticks
     )
     root.add_children([
         DelayedSuccess("TaskA (3 ticks)", ticks=3),
-        DelayedSuccess("TaskB (10 ticks)", ticks=10),
-        AlwaysRunning("Background (Never Stop)"),  # Uncomment to see RUNNING status
+        DelayedSuccess("TaskB (5 ticks)", ticks=5),
+        AlwaysRunning("Background (Never Stop)"),  # keeps the sequence RUNNING at the end
     ])
     return root
 
 
 if __name__ == "__main__":
     tree = py_trees.trees.BehaviourTree(root=build_tree())
+    path = Path() / "Demo" / "Composites" / "render"
+    py_trees.display.render_dot_tree(tree.root, name="sequence_demo_tree", target_directory=path)
     tree.setup(timeout=1.0)
     count = 0
-    # render the tree to png
-    py_trees.display.render_dot_tree(tree.root, name="parallel_demo_tree", target_directory=Path() / "Demo" / "render")
     while True:
         count += 1
         RATE_HZ = 1.0
@@ -57,14 +57,11 @@ if __name__ == "__main__":
 
         if now < tree._next_tick_time:
             time.sleep(tree._next_tick_time - now)
-
         print(f"--- Tick {count} ---")
         tree.tick()
         tree._next_tick_time += period
         child_states = ", ".join(f"{c.name}:{c.status.name}" for c in tree.root.children)
-        # print(f"tick {i+1} -> root:{tree.root.status.name} | {child_states}")
-        # render the tree to the console
-        print(py_trees.display.ascii_tree(tree.root,show_status=True))
+        print(py_trees.display.ascii_tree(tree.root, show_status=True))
         print("\n")
         if tree.root.status != py_trees.common.Status.RUNNING:
             break
