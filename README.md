@@ -52,21 +52,6 @@ Most scripts will tick the tree and print results in the console. Some will also
 
 ---
 
-## 📂 Repo Structure (example)
-
-```
-.
-├── Simple_Action_Demo.py
-├── Sequence_Demo.py
-├── Selector_Demo.py
-├── Decorator_Retry_Demo.py
-├── Blackboard_Demo.py
-├── utils/
-│   └── helper_nodes.py
-└── README.md
-```
-
----
 
 ## 🧠 What are Behavior Trees?
 
