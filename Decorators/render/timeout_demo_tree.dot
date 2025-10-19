@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+TimeoutDemo [label="Ⓜ TimeoutDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Timeout After 3s" [label="Timeout After 3s", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+TimeoutDemo -> "Timeout After 3s";
+"Long Task (5 ticks)" [label="Long Task (5 ticks)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Timeout After 3s" -> "Long Task (5 ticks)";
+"After Timeout" [label="After Timeout", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+TimeoutDemo -> "After Timeout";
+}
