@@ -30,10 +30,41 @@ Each script in the repo demonstrates a different tree structure or behavior patt
 
 ## ✅ Requirements
 
-Install dependencies with:
+This project uses **uv** (a very fast Python package manager and virtual environment tool).  
+If you don't already have `uv` installed, you can install it first:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Then, create and activate the virtual environment automatically when syncing dependencies:
 
 ```bash
 uv sync
+```
+
+You can also run Python scripts inside the uv environment without activating it manually:
+
+```bash
+uv run python Composites/Selector_Demo.py
+```
+
+To add a new library to the project, use:
+
+```bash
+uv add <package-name>
+```
+
+To remove a package:
+
+```bash
+uv remove <package-name>
+```
+
+To update all dependencies:
+
+```bash
+uv sync --upgrade
 ```
 
 ---
@@ -45,7 +76,7 @@ Each Python file is a standalone behavior tree demo.
 For example:
 
 ```bash
-python Selector_Demo.py
+uv run python Composites/Selector_Demo.py
 ```
 
 Most scripts will tick the tree and print results in the console. Some will also generate `.png` tree visualisations.

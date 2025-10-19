@@ -9,11 +9,11 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>pastafarianism</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-112 330.33,-112 330.33,4 -4,4"/>
-<!-- SequenceDemo -->
+<!-- SelectorDemo -->
 <g id="node1" class="node">
-<title>SequenceDemo</title>
-<polygon fill="orange" stroke="black" points="182.61,-108 99.86,-108 99.86,-72 182.61,-72 182.61,-108"/>
-<text text-anchor="middle" x="141.24" y="-86.7" font-family="Times,serif" font-size="9.00">Ⓜ SequenceDemo</text>
+<title>SelectorDemo</title>
+<polygon fill="cyan" stroke="black" points="190.13,-82.54 190.13,-97.46 161.49,-108 120.98,-108 92.34,-97.46 92.34,-82.54 120.98,-72 161.49,-72 190.13,-82.54"/>
+<text text-anchor="middle" x="141.24" y="-86.7" font-family="Times,serif" font-size="9.00">Ⓜ SelectorDemo</text>
 </g>
 <!-- TaskA (3 ticks) -->
 <g id="node2" class="node">
@@ -21,11 +21,11 @@
 <ellipse fill="gray" stroke="black" cx="41.24" cy="-18" rx="41.24" ry="18"/>
 <text text-anchor="middle" x="41.24" y="-14.7" font-family="Times,serif" font-size="9.00">TaskA (3 ticks)</text>
 </g>
-<!-- SequenceDemo&#45;&gt;TaskA (3 ticks) -->
+<!-- SelectorDemo&#45;&gt;TaskA (3 ticks) -->
 <g id="edge1" class="edge">
-<title>SequenceDemo&#45;&gt;TaskA (3 ticks)</title>
-<path fill="none" stroke="black" d="M116.26,-71.52C102.82,-62.11 86.12,-50.42 71.9,-40.46"/>
-<polygon fill="black" stroke="black" points="73.95,-37.63 63.75,-34.76 69.94,-43.36 73.95,-37.63"/>
+<title>SelectorDemo&#45;&gt;TaskA (3 ticks)</title>
+<path fill="none" stroke="black" d="M118.04,-72.76C104.22,-63.09 86.52,-50.7 71.6,-40.25"/>
+<polygon fill="black" stroke="black" points="73.7,-37.45 63.5,-34.58 69.69,-43.19 73.7,-37.45"/>
 </g>
 <!-- TaskB (5 ticks) -->
 <g id="node3" class="node">
@@ -33,9 +33,9 @@
 <ellipse fill="gray" stroke="black" cx="141.24" cy="-18" rx="41.24" ry="18"/>
 <text text-anchor="middle" x="141.24" y="-14.7" font-family="Times,serif" font-size="9.00">TaskB (5 ticks)</text>
 </g>
-<!-- SequenceDemo&#45;&gt;TaskB (5 ticks) -->
+<!-- SelectorDemo&#45;&gt;TaskB (5 ticks) -->
 <g id="edge2" class="edge">
-<title>SequenceDemo&#45;&gt;TaskB (5 ticks)</title>
+<title>SelectorDemo&#45;&gt;TaskB (5 ticks)</title>
 <path fill="none" stroke="black" d="M141.24,-71.7C141.24,-64.41 141.24,-55.73 141.24,-47.54"/>
 <polygon fill="black" stroke="black" points="144.74,-47.62 141.24,-37.62 137.74,-47.62 144.74,-47.62"/>
 </g>
@@ -45,11 +45,11 @@
 <ellipse fill="gray" stroke="black" cx="263.24" cy="-18" rx="63.09" ry="18"/>
 <text text-anchor="middle" x="263.24" y="-14.7" font-family="Times,serif" font-size="9.00">Background (Never Stop)</text>
 </g>
-<!-- SequenceDemo&#45;&gt;Background (Never Stop) -->
+<!-- SelectorDemo&#45;&gt;Background (Never Stop) -->
 <g id="edge3" class="edge">
-<title>SequenceDemo&#45;&gt;Background (Never Stop)</title>
-<path fill="none" stroke="black" d="M171.71,-71.52C188.23,-62.04 208.77,-50.25 226.21,-40.25"/>
-<polygon fill="black" stroke="black" points="227.82,-43.36 234.75,-35.35 224.33,-37.29 227.82,-43.36"/>
+<title>SelectorDemo&#45;&gt;Background (Never Stop)</title>
+<path fill="none" stroke="black" d="M167.71,-73.81C184.82,-63.99 207.33,-51.08 226.2,-40.25"/>
+<polygon fill="black" stroke="black" points="227.73,-43.41 234.66,-35.4 224.24,-37.34 227.73,-43.41"/>
 </g>
 </g>
 </svg>
