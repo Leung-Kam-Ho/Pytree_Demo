@@ -104,7 +104,7 @@ class Foo(py_trees.behaviour.Behaviour):
             "  %s [Foo::terminate().terminate()][%s->%s]"
             % (self.name, self.status, new_status)
         )
-        
+
 
 def main():
     action = Foo("Root Foo")

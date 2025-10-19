@@ -3,7 +3,6 @@ import time
 import py_trees
 
 
-
 class CyclingStatus(py_trees.behaviour.Behaviour):
     """
     Cycles through RUNNING -> SUCCESS -> FAILURE -> RUNNING -> ...
