@@ -27,22 +27,38 @@ class DelayedSuccess(py_trees.behaviour.Behaviour):
         return py_trees.common.Status.SUCCESS
 
 
+class DelayedFailure(py_trees.behaviour.Behaviour):
+    def __init__(self, name="Task", ticks=3):
+        super().__init__(name)
+        self.ticks = ticks
+        self.count = 0
+
+    def initialise(self):
+        self.count = 0
+
+    def update(self):
+        self.count += 1
+        if self.count < self.ticks:
+            return py_trees.common.Status.RUNNING
+        return py_trees.common.Status.FAILURE
+
+
 def build_tree():
-    root = py_trees.composites.Sequence(
-        name="SequenceDemo",
+    root = py_trees.composites.Selector(
+        name="SelectorDemo",
         memory=True  # set True to remember progress across ticks
     )
     root.add_children([
-        DelayedSuccess("TaskA (3 ticks)", ticks=3),
+        DelayedFailure("TaskA (3 ticks)", ticks=3),
         DelayedSuccess("TaskB (5 ticks)", ticks=5),
-        AlwaysRunning("Background (Never Stop)"),  # keeps the sequence RUNNING at the end
+        AlwaysRunning("Background (Never Stop)"),  # keeps the selector RUNNING at the end
     ])
     return root
 
 
 if __name__ == "__main__":
     tree = py_trees.trees.BehaviourTree(root=build_tree())
-    path = Path() / "Demo" / "Composites" / "render"
+    path = Path() / "Composites" / "render"
     py_trees.display.render_dot_tree(tree.root, name="sequence_demo_tree", target_directory=path)
     tree.setup(timeout=1.0)
     count = 0

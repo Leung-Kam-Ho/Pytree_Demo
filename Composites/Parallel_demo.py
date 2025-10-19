@@ -45,7 +45,7 @@ if __name__ == "__main__":
     tree.setup(timeout=1.0)
     count = 0
     # render the tree to png
-    path = Path() / "Demo" / "Composites" / "render"
+    path = Path() / "Composites" / "render"
     py_trees.display.render_dot_tree(tree.root, name="parallel_demo_tree", target_directory=path)
     while True:
         count += 1

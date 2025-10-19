@@ -3,11 +3,11 @@ ordering=out;
 graph [fontname="times-roman"];
 node [fontname="times-roman"];
 edge [fontname="times-roman"];
-SelectorDemo [label="Ⓜ SelectorDemo", shape=octagon, style=filled, fillcolor=cyan, fontsize=9, fontcolor=black];
+SequenceDemo [label="Ⓜ SequenceDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
 "TaskA (3 ticks)" [label="TaskA (3 ticks)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
-SelectorDemo -> "TaskA (3 ticks)";
+SequenceDemo -> "TaskA (3 ticks)";
 "TaskB (5 ticks)" [label="TaskB (5 ticks)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
-SelectorDemo -> "TaskB (5 ticks)";
+SequenceDemo -> "TaskB (5 ticks)";
 "Background (Never Stop)" [label="Background (Never Stop)", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
-SelectorDemo -> "Background (Never Stop)";
+SequenceDemo -> "Background (Never Stop)";
 }
