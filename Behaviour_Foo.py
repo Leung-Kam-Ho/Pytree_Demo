@@ -96,7 +96,7 @@ class Foo(py_trees.behaviour.Behaviour):
         Minimal termination implementation.
 
         When is this called?
-           Whenever your behaviour switches to a non-running state.
+          Whenever your behaviour switches to a non-running state.
             - SUCCESS || FAILURE : your behaviour's work cycle has finished
             - INVALID : a higher priority branch has interrupted, or shutting down
         """
