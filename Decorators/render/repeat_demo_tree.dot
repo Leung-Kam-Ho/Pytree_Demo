@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+RepeatDemo [label="Ⓜ RepeatDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Repeat 3 Times" [label="Repeat 3 Times", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+RepeatDemo -> "Repeat 3 Times";
+"Success After 2 Ticks" [label="Success After 2 Ticks", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Repeat 3 Times" -> "Success After 2 Ticks";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+RepeatDemo -> Done;
+}
