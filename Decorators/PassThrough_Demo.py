@@ -2,7 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
-# Selector is a composite in py_trees that executes each of its child behaviours in turn until one of them succeeds (at which point it itself returns RUNNING or SUCCESS, or it runs out of children at which point it itself returns FAILURE). We usually refer to selecting children as a means of choosing between priorities.
+# PassThrough is a decorator in py_trees that simply forwards the status of its child without changing it. It does not add any behavior or logic—it literally "passes through" whatever the child returns.
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):
@@ -45,23 +45,29 @@ class DelayedFailure(py_trees.behaviour.Behaviour):
 
 
 def build_tree():
-    root = py_trees.composites.Selector(
-        name="SelectorDemo",
-        memory=True  # set True to remember progress across ticks
+    root = py_trees.composites.Sequence(name="PassThroughDemo", memory=True)
+
+    # Task that succeeds after delay
+    succeeding_task = DelayedSuccess("Succeed After 3 Ticks", ticks=3)
+
+    # PassThrough decorator reflects child status
+    pass_through_decorator = py_trees.decorators.PassThrough(
+        name="Pass Through",
+        child=succeeding_task
     )
-    root.add_children([
-        DelayedFailure("TaskA (3 ticks)", ticks=3),
-        DelayedSuccess("TaskB (5 ticks)", ticks=5),
-        AlwaysRunning("Background (Never Stop)"),  # keeps the selector RUNNING at the end
-    ])
+
+    # Final task to show sequence continues
+    final_task = DelayedSuccess("Done", ticks=1)
+
+    root.add_children([pass_through_decorator, final_task])
     return root
 
 
 if __name__ == "__main__":
     tree = py_trees.trees.BehaviourTree(root=build_tree())
-    path = Path() / "Composites" / "render"
+    path = Path() / "Decorators" / "render"
     path.mkdir(parents=True, exist_ok=True)
-    py_trees.display.render_dot_tree(tree.root, name="sequence_demo_tree", target_directory=path)
+    py_trees.display.render_dot_tree(tree.root, name="pass_through_demo_tree", target_directory=path)
     tree.setup(timeout=1.0)
     count = 0
     while True:

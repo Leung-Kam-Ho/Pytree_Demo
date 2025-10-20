@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+RunningIsFailureDemo [label="Ⓜ RunningIsFailureDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Running to Failure" [label="Running to Failure", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+RunningIsFailureDemo -> "Running to Failure";
+"Always Running" [label="Always Running", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Running to Failure" -> "Always Running";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+RunningIsFailureDemo -> Done;
+}

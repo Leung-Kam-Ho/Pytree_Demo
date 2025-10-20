@@ -2,6 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
+# Sequence is a composite in py_trees that executes children sequentially. It will progressively tick over each of its children so long as each child returns SUCCESS. If any child returns FAILURE or RUNNING the sequence will halt and the parent will adopt the result of this child. If it reaches the last child, it returns with that result regardless.
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):

@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+SuccessIsFailureDemo [label="Ⓜ SuccessIsFailureDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Success to Failure" [label="Success to Failure", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+SuccessIsFailureDemo -> "Success to Failure";
+"Succeed Immediately" [label="Succeed Immediately", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Success to Failure" -> "Succeed Immediately";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+SuccessIsFailureDemo -> Done;
+}

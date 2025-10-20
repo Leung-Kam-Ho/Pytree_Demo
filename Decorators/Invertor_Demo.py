@@ -2,6 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
+# Inverter is a decorator in py_trees that inverts the result of its child's update function, flipping SUCCESS to FAILURE and FAILURE to SUCCESS.
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):

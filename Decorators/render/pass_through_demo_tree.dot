@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+PassThroughDemo [label="Ⓜ PassThroughDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Pass Through" [label="Pass Through", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+PassThroughDemo -> "Pass Through";
+"Succeed After 3 Ticks" [label="Succeed After 3 Ticks", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Pass Through" -> "Succeed After 3 Ticks";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+PassThroughDemo -> Done;
+}

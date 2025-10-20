@@ -2,6 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
+# Timeout is a decorator in py_trees that executes a child/subtree with a timeout. If the timeout is reached, the encapsulated behaviour’s stop() method is called with status FAILURE otherwise it will simply directly tick and return with the same status as that of it’s encapsulated behaviour.
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):

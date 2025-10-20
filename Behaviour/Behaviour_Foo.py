@@ -5,6 +5,7 @@ import typing
 import time
 import py_trees
 
+# Foo is a skeleton behaviour in py_trees that demonstrates the basic structure of a custom behaviour. It randomly returns RUNNING, SUCCESS, or FAILURE to illustrate the lifecycle methods.
 
 class Foo(py_trees.behaviour.Behaviour):
     """A skeleton behaviour that inherits from the PyTrees Behaviour class."""

@@ -2,6 +2,8 @@ import py_trees
 import time
 from pathlib import Path
 
+# Repeat is a decorator in py_trees that repeats the execution of its child a specified number of times.
+
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):

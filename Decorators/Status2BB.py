@@ -2,6 +2,8 @@
 import time
 import py_trees
 
+# StatusToBlackboard is a decorator in py_trees that writes the status of its child to a specified variable on the blackboard.
+
 
 class CyclingStatus(py_trees.behaviour.Behaviour):
     """

@@ -2,6 +2,7 @@ import py_trees
 import time
 from pathlib import Path
 
+# Parallel is a composite in py_trees that enables a kind of spooky at-a-distance concurrency. Parallels tick every child every time the parallel is itself ticked. The parallelism however, is merely conceptual. The children have actually been sequentially ticked, but from both the tree and the parallel’s purview, all children have been ticked at once.
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):

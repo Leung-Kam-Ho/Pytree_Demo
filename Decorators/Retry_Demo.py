@@ -2,6 +2,8 @@ import py_trees
 import time
 from pathlib import Path
 
+# Retry is a decorator in py_trees that retries the execution of its child a specified number of times upon failure.
+
 
 class AlwaysRunning(py_trees.behaviour.Behaviour):
     def __init__(self, name="Background"):
