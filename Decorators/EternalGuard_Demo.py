@@ -45,28 +45,45 @@ class DelayedFailure(py_trees.behaviour.Behaviour):
         return py_trees.common.Status.FAILURE
 
 
-def condition():
-    # Simple condition that always allows execution
+def condition_true():
+    # Condition that always allows execution
     return True
 
 
+def condition_false():
+    # Condition that never allows execution
+    return False
+
+
+def condition_inverted_false():
+    # Condition that inverts the false condition (always true)
+    return not condition_false()
+
+
 def build_tree():
-    root = py_trees.composites.Sequence(name="EternalGuardDemo", memory=True)
+    root = py_trees.composites.Parallel(name="EternalGuardDemo", policy=py_trees.common.ParallelPolicy.SuccessOnAll())
 
-    # Task that succeeds after delay
-    succeeding_task = DelayedSuccess("Succeed After 3 Ticks", ticks=3)
+    # Task that succeeds after delay for true condition
+    succeeding_task_true = DelayedSuccess("Succeed After 3 Ticks (True)", ticks=3)
 
-    # EternalGuard decorator checks condition every tick
-    eternal_guard_decorator = py_trees.decorators.EternalGuard(
-        name="Eternal Guard",
-        child=succeeding_task,
-        condition=condition
+    # EternalGuard decorator with true condition
+    eternal_guard_true = py_trees.decorators.EternalGuard(
+        name="Eternal Guard (True)",
+        child=succeeding_task_true,
+        condition=condition_true
     )
 
-    # Final task to show sequence continues
-    final_task = DelayedSuccess("Done", ticks=1)
+    # Task that succeeds after delay for false condition
+    succeeding_task_false = DelayedSuccess("Succeed After 3 Ticks (False)", ticks=3)
 
-    root.add_children([eternal_guard_decorator, final_task])
+    # EternalGuard decorator with false condition
+    eternal_guard_false = py_trees.decorators.EternalGuard(
+        name="Eternal Guard (Condition False, Child Never Runs)",
+        child=succeeding_task_false,
+        condition=condition_false
+    )
+
+    root.add_children([eternal_guard_true, py_trees.decorators.Inverter(name="Inverter (Keep Parallel Running)", child=eternal_guard_false)])
     return root
 
 
