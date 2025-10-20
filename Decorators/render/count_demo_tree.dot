@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+CountDemo [label="Ⓜ CountDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Count Ticks" [label="Count Ticks", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+CountDemo -> "Count Ticks";
+"Succeed After 2 Ticks" [label="Succeed After 2 Ticks", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Count Ticks" -> "Succeed After 2 Ticks";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+CountDemo -> Done;
+}

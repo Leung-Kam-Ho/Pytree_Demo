@@ -4,6 +4,7 @@ import random
 import typing
 import time
 import py_trees
+from pathlib import Path
 
 # Foo is a skeleton behaviour in py_trees that demonstrates the basic structure of a custom behaviour. It randomly returns RUNNING, SUCCESS, or FAILURE to illustrate the lifecycle methods.
 
@@ -107,19 +108,40 @@ class Foo(py_trees.behaviour.Behaviour):
         )
 
 
-def main():
-    action = Foo("Root Foo")
-    # py_trees.logging.level = py_trees.logging.Level.DEBUG
-    action.setup(timeout=15)
-    try:
-        for _unused_i in range(0, 12):
-            action.tick_once()
-            print(action.feedback_message)
-            time.sleep(0.5)
-        print("\n")
-    except KeyboardInterrupt:
-        pass
+def build_tree() -> py_trees.behaviour.Behaviour:
+    """Helper function to build a sample tree with Foo behaviour."""
+    root = py_trees.composites.Sequence(name="FooDemo", memory=True)
 
+    foo_task = Foo(name="Foo Task")
+
+    final_task = py_trees.behaviours.Success(name="Done")
+
+    root.add_children([foo_task, final_task])
+    return root
 
 if __name__ == "__main__":
-    main()
+    tree = py_trees.trees.BehaviourTree(root=build_tree())
+    path = Path() / "Behaviour" / "render"
+    path.mkdir(parents=True, exist_ok=True)
+    py_trees.display.render_dot_tree(tree.root, name="condition_demo_tree", target_directory=path)
+    tree.setup(timeout=1.0)
+    count = 0
+    while True:
+        count += 1
+        RATE_HZ = 1.0
+        period = 1.0 / RATE_HZ
+
+        now = time.perf_counter()
+        if not hasattr(tree, "_next_tick_time"):
+            tree._next_tick_time = now
+
+        if now < tree._next_tick_time:
+            time.sleep(tree._next_tick_time - now)
+        print(f"--- Tick {count} ---")
+        tree.tick()
+        tree._next_tick_time += period
+        child_states = ", ".join(f"{c.name}:{c.status.name}" for c in tree.root.children)
+        print(py_trees.display.ascii_tree(tree.root, show_status=True))
+        print("\n")
+        if tree.root.status != py_trees.common.Status.RUNNING:
+            break
