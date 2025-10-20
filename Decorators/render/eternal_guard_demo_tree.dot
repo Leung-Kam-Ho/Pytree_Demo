@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+EternalGuardDemo [label="Ⓜ EternalGuardDemo", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Eternal Guard" [label="Eternal Guard", shape=ellipse, style=filled, fillcolor=ghostwhite, fontsize=9, fontcolor=black];
+EternalGuardDemo -> "Eternal Guard";
+"Succeed After 3 Ticks" [label="Succeed After 3 Ticks", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+"Eternal Guard" -> "Succeed After 3 Ticks";
+Done [label=Done, shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+EternalGuardDemo -> Done;
+}

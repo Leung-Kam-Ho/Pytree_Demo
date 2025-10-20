@@ -54,7 +54,7 @@ def build_tree():
     root = py_trees.composites.Sequence(name="EternalGuardDemo", memory=True)
 
     # Task that succeeds after delay
-    succeeding_task = DelayedSuccess("Succeed After 2 Ticks", ticks=2)
+    succeeding_task = DelayedSuccess("Succeed After 3 Ticks", ticks=3)
 
     # EternalGuard decorator checks condition every tick
     eternal_guard_decorator = py_trees.decorators.EternalGuard(
